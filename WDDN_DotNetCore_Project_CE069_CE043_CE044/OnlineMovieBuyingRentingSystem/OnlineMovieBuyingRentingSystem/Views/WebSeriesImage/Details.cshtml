@@ -1,0 +1,29 @@
+﻿@model OnlineMovieBuyingRentingSystem.Models.WebSeriesImage
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>WebSeriesImage</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.WebSeries)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.WebSeries.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Path)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Path)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-controller="WebSeriesImage" asp-action="WebSeriesImages" asp-route-id=@(Model.WebSeries.Id)>Back to List</a>
+</div>

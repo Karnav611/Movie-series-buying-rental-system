@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Webshows";
+}
+
+
+<table class="container"  style=" width:1000px; margin-left: 3rem">
+<tr>
+    <td style="padding:2rem; align-content:center">
+        <div class="col mx-auto p-3 mb-5 bg-light rounded" style="border:solid 1px black;">
+            @foreach (var item in ViewBag.WebSeries)
+            {
+                <div class="card" style="height:40rem; width: 28rem;">
+                    <img src=@item.Poster class="card-img-top" alt="..." style="border:solid 1px black" width="394" height="405">
+                    <div class="card-body" style="text-align:start; margin-left:1rem; margin-bottom:2rem">
+                        <h4 class="card-title"> <b>Name: @item.Title</b> </h4>
+                        <p class="card-text m-0 p-0"> @item.Description </p>
+                        <br>
+                        <p class="price">Price: ₹@item.PurchasePrice</p>
+                        <a asp-action="WebshowPage" asp-route-id="@item.Id"><input type="button" class="btn btn-primary" value="View" /></a>
+                    </div>
+                </div>
+                <br> <br>
+            }
+
+        </div>
+    </td>
+</tr>
+</table>
+

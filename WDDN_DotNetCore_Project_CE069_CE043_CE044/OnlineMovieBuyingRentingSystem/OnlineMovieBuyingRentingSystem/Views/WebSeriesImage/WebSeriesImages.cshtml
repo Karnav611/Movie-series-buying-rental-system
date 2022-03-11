@@ -1,0 +1,47 @@
+﻿@model IEnumerable<OnlineMovieBuyingRentingSystem.Models.WebSeriesImage>
+@{
+    ViewData["Title"] = "WebSeriesImages";
+}
+
+
+<h1>@ViewBag.WebSeries.Title Images</h1>
+
+<a href="/Admin">Admin</a>
+<br />
+
+<a href="/WebSeries">Manage WebSeries</a>
+
+<p>
+    <a href="/WebSeriesImage/Create">Add New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.WebSeries)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Path)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WebSeries.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Path)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

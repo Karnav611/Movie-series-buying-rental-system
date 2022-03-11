@@ -1,0 +1,36 @@
+﻿@model OnlineMovieBuyingRentingSystem.Models.WebSeries
+@{
+    ViewData["Title"] = "Buy";
+}
+
+
+<h2>Rent</h2>
+<br>
+<br>
+
+<div style="width:700px">
+    <h3> Amount: ₹ @Model.RentPrice </h3> <br>
+    <div class="form-group row">
+        <label for="cardnumber" class="col-sm-2 col-form-label">Enter Card number</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="cardnumbedr" placeholder="Card Number" required>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-10">
+            <input type="password" class="form-control" id="inputPassword3" placeholder="Password" required>
+        </div>
+    </div>
+    <br>
+    <div class="form-group row">
+        <label for="cvv" class="col-sm-2 col-form-label">CVV</label>
+        <div class="col-sm-10">
+            <input type="password" class="form-control" id="cvv" placeholder="CVV" required>
+        </div>
+    </div>
+    <br><br>
+    <div class="form-group row" style="margin-left: 3rem">
+        <a asp-action="WebshowOnlinePlayer" asp-route-id="@Model.Id"><input type="button" class="btn btn-primary" value="Confirm" /></a>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<OnlineMovieBuyingRentingSystem.Models.WebSeriesCast>
+
+@{
+    ViewData["Title"] = "ViewWebSeriesCast";
+}
+
+<h1>Cast for @ViewBag.WebSeriesTitle</h1>
+
+<a asp-action="WebSeriesCastCreate">Add Cast</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CharacterName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Actor)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CharacterName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Actor.Name)
+                </td>
+                <td>
+                    <a asp-action="WebSeriesCastEdit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="WebSeriesCastDetails" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="WebSeriesCastDelete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

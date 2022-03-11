@@ -1,0 +1,91 @@
+﻿@model IEnumerable<OnlineMovieBuyingRentingSystem.Models.Movie>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h3> Top Movies </h3>
+<!-- Movies Carousel -->
+<div id="carouselExampleControls2" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <center>
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleControls2" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleControls2" data-slide-to="1"></li>
+                <li data-target="#carouselExampleControls2" data-slide-to="2"></li>
+                <li data-target="#carouselExampleControls2" data-slide-to="3"></li>
+            </ol>
+        </center>
+        @{ var first = true; }
+        @foreach (var item in ViewBag.Movies)
+        {
+            <div class="carousel-item @(first?Html.Raw("active"):Html.Raw(""))">
+                <div class="item" style="background-color: rgb(40,40,40); height: 750px; width: 1100px ">
+                    <center>
+                        <img class="d-block w-100" style="margin-top:2rem; height:600px; width:1000px" src=@item.Poster alt="Slide">
+                    </center>
+                    <h5 class="card-title" style="text-align: center; color: ButtonShadow">@item.Title</h5>
+                    <p class="card-text" style="text-align: center; color: ButtonShadow">@item.Description</p>
+                    <center>
+                        <a asp-action="MoviePage" asp-route-id="@item.Id"><input type="button" class="btn btn-primary" value="View" /></a>
+                    </center>
+                    <br />
+                    <br />
+                </div>
+            </div>first = false;
+        }
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls2" role="button"
+       data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls2" role="button"
+       data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<br>
+<br>
+<h3> Top Webshows </h3>
+<!-- Webshows Carousel -->
+<div id="webcarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <center>
+            <ol class="carousel-indicators">
+                <li data-target="#webcarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#webcarousel" data-slide-to="1"></li>
+                <li data-target="#webcarousel" data-slide-to="2"></li>
+            </ol>
+        </center>
+        @{ var second = true; }
+        @foreach (var item in ViewBag.Webseries)
+        {
+            <div class="carousel-item @(second?Html.Raw("active"):Html.Raw(""))">
+                <div class="item" style="background-color: rgb(40,40,40); height: 750px; width: 1100px ">
+                    <center>
+                        <img class="d-block w-100" style="margin-top:2rem; height:600px; width:1000px" src=@item.Poster alt="Slide">
+                    </center>
+                    <h5 class="card-title" style="text-align: center; color: ButtonShadow">@item.Title</h5>
+                    <p class="card-text" style="text-align: center; color: ButtonShadow">@item.Description</p>
+                    <center><a asp-action="WebshowPage" asp-route-id="@item.Id"><input type="button" class="btn btn-primary" value="View" /></a></center>
+                    <br />
+                    <br />
+                </div>
+            </div>second = false;
+        }
+    </div>
+    <a class="carousel-control-prev" href="#webcarousel" role="button"
+       data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#webcarousel" role="button"
+       data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+
+</div>
+

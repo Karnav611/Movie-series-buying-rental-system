@@ -1,0 +1,110 @@
+﻿@model OnlineMovieBuyingRentingSystem.Models.WebSeries
+@{
+    ViewData["Title"] = "Webshows";
+}
+
+<h1> Webshow Homepage </h1>
+
+<div>
+    <div class="container-fluid">
+        <div class="row" style="margin-right:40rem">
+
+            <div class="col" style="padding:3rem; margin-left:2rem;">
+                <h3 style="text-align:center; font-family:'Agency FB'"> Trailer </h3>
+                <!-- player-->
+                <div style="margin-right:7rem">
+                    <iframe id="player" width="980" height="510" src=@Model.TrailerLink frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!--ScreenShots-->
+        <div class="row" style="margin-right:20rem">
+            <!-- Slider -->
+            <div class="container" style="margin-left:11rem; padding:2rem;">
+                <h3 style="text-align:center; font-family:'Agency FB'"> Screenshots </h3>
+                <div id="demo" class="carousel slide my-5" data-ride="carousel" style="margin-top:1rem;">
+
+                    <ul class="carousel-indicators">
+                        <li data-target="#demo" data-slide-to="0" class="active sld"> </li>
+                        <li data-target="#demo" data-slide-to="1" class="sld"> </li>
+                        <li data-target="#demo" data-slide-to="2" class="sld"> </li>
+                    </ul>
+
+                    <div id="webcarousel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <center>
+                                <ol class="carousel-indicators">
+                                    <li data-target="#webcarousel" data-slide-to="0" class="active"></li>
+                                    <li data-target="#webcarousel" data-slide-to="1"></li>
+                                    <li data-target="#webcarousel" data-slide-to="2"></li>
+                                </ol>
+                            </center>
+                            @{ var second = true; }
+                            @foreach (var item in ViewBag.Images)
+                            {
+                                <div class="carousel-item @(second?Html.Raw("active"):Html.Raw(""))">
+                                    <div class="item" style="background-color: rgb(40,40,40); ">
+                                        <center>
+                                            <img class="d-block w-100" style="margin-top:2rem; height:600px; width:1000px" src=@item.Path alt="Slide">
+                                        </center>
+                                    </div>
+                                </div>second = false;
+                            }
+                        </div>
+                        <a class="carousel-control-prev" href="#webcarousel" role="button"
+                           data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#webcarousel" role="button"
+                           data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Description part -->
+
+        <div class="card" style="margin-left:1rem; margin-bottom:2rem; padding:5px;">
+            <h2 style="font-family:'Agency FB'"> Cast </h2> <br />
+            <div class="row" height="150rem" ; width="50rem" style="margin-bottom:3rem">
+                <div class="column">
+                    @foreach (var item in Model.WebSeriesCast)
+                    {
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">@item.Actor.Name</h5>
+                                <p class="card-text"> @item.CharacterName</p>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+            <div class="card" style=" border:none; align-self:center ">
+
+                <h2 style=" font-family:'Agency FB'; align-self:center "> description part </h2>
+
+                <h4> @Model.Description </h4>
+
+            </div>
+
+            <div class="card" style="margin-top:1rem; margin-left:3rem; height:75px; width:400px; align-self:center; align-items:center ">
+
+                <div class="row">
+                    <div class="column" style="margin-right: 3rem">
+                        <a asp-action="WebshowPurchasePage" asp-route-id="@Model.Id"><input type="button" class="btn btn-primary" value="Buy" /></a>
+                    </div>
+                    <div class="column">
+                        <a asp-action="WebshowRentPage" asp-route-id="@Model.Id"><input type="button" class="btn btn-primary" value="Rent" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>   

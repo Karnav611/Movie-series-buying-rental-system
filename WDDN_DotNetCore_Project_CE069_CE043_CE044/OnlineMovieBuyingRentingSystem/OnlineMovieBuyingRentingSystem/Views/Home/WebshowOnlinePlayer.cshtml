@@ -1,0 +1,16 @@
+﻿@model OnlineMovieBuyingRentingSystem.Models.WebSeries
+@{
+    ViewData["Title"] = "Watch online";
+}
+
+<h1> Enjoy @Model.Title</h1>
+
+<div class="row" style="margin-right:40rem">
+
+    <div class="col" style="padding:3rem; margin-left: 5rem;">
+        <!-- player-->
+        <div style="margin-right:7rem">
+            <iframe id="player" width="900" height="510" src=@Model.RentLink frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+    </div>
+</div>
